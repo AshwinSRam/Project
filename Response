@@ -1,0 +1,16 @@
+import cohere
+
+# Initialize Cohere
+co = cohere.Client('YOUR_COHERE_API_KEY')
+
+# Retrieve the most relevant document
+retrieved_document = documents[results['matches'][0]['id']]
+
+# Generate an answer
+response = co.generate(
+    model='xlarge',
+    prompt=f"Based on the following document, answer the question:\n\nDocument: {retrieved_document}\n\nQuestion: {query}",
+    max_tokens=100
+)
+
+print(response.generations[0].text)
