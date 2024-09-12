@@ -1,0 +1,9 @@
+import pinecone
+
+# Initialize Pinecone
+pinecone.init(api_key='YOUR_PINECONE_API_KEY', environment='YOUR_ENVIRONMENT')
+
+# Create an index (if not created)
+index_name = 'document-embeddings'
+pinecone.create_index(index_name, dimension=768)  # Example dimension for sentence-transformers
+index = pinecone.Index(index_name)
